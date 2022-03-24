@@ -1,20 +1,27 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@types/node': ^17.0.22
-  ethcall: ^4.4.0
-  ethers: ^5.6.1
-  typescript: ^4.5.4
-  vite: ^2.8.0
+importers:
 
-dependencies:
-  '@types/node': 17.0.23
-  ethcall: 4.4.0
-  ethers: 5.6.1
+  .:
+    specifiers:
+      ethcall: ^4.4.0
+      ethers: ^5.6.1
+    dependencies:
+      ethcall: 4.4.0
+      ethers: 5.6.1
 
-devDependencies:
-  typescript: 4.6.2
-  vite: 2.8.6
+  basics:
+    specifiers:
+      '@web3-learning/abi': workspace:^1.0.0
+      '@web3-learning/utils': workspace:^1.0.0
+      typescript: ^4.5.4
+      vite: ^2.8.0
+    dependencies:
+      '@web3-learning/abi': link:../abi
+      '@web3-learning/utils': link:../utils
+    devDependencies:
+      typescript: 4.6.2
+      vite: 2.8.6
 
 packages:
 
@@ -333,10 +340,6 @@ packages:
 
   /@types/node/16.11.26:
     resolution: {integrity: sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==}
-    dev: false
-
-  /@types/node/17.0.23:
-    resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==}
     dev: false
 
   /abi-coder/2.1.0:

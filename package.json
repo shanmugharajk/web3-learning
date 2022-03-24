@@ -1,18 +1,16 @@
 {
   "name": "web3-learning",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "pnpm run dev:basics",
+    "dev:basics": "pnpm run dev --filter @web3-learning/basics"
   },
-  "devDependencies": {
-    "typescript": "^4.5.4",
-    "vite": "^2.8.0"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@types/node": "^17.0.22",
     "ethcall": "^4.4.0",
     "ethers": "^5.6.1"
   }
