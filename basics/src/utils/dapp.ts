@@ -36,13 +36,19 @@ export class Dapp {
       const ethcallProvider = new Provider();
       await ethcallProvider.init(this.provider);
 
+      const nativeTokenBalanceCall =
+        ethcallProvider.getEthBalance(walletAddress);
+
       const calls = addresses.map((address) => {
         const contract = new Contract(address, ERC20Abi);
         const balanceCall = contract.balanceOf(walletAddress);
         return balanceCall;
       });
 
-      const data = await ethcallProvider.all(calls);
+      const data = await ethcallProvider.all([
+        ...calls,
+        nativeTokenBalanceCall,
+      ]);
 
       return data?.map((record: any) => record.toString());
     } catch (err) {
