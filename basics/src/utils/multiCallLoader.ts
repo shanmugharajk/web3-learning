@@ -1,13 +1,13 @@
 import { dappInstance } from "./dapp";
-import { DataLoader } from "./dataloader";
+import { Batch } from "./batch";
 import { useStore } from "~/store";
 
-export const multiCallLoader = new DataLoader<string, any>(
-  async (addresses) => {
-    return dappInstance.multicall(useStore.getState().walletAddress, addresses);
+export const multiCallLoader = new Batch({
+  batchSize: 10,
+  multiCallFn: async (queryInfos) => {
+    return dappInstance.multicall(
+      useStore.getState().walletAddress,
+      queryInfos.map((q) => q.address)
+    );
   },
-  {
-    cache: false,
-    batchScheduleFn: (callback) => setTimeout(callback, 200),
-  }
-);
+});

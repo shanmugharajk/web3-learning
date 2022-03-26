@@ -4,7 +4,11 @@ import { contractAddresses, multiCallLoader } from "~/utils";
 export const DAI: React.FunctionComponent = () => {
   const { data: DAIBalance } = useQuery(
     ["DAIBalance"],
-    () => multiCallLoader.load(contractAddresses.DAI),
+    () =>
+      multiCallLoader.load({
+        address: contractAddresses.DAI,
+        method: "balanceOf",
+      }),
     {
       refetchInterval: 5_000,
     }

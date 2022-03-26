@@ -4,7 +4,11 @@ import { contractAddresses, multiCallLoader } from "~/utils";
 export const USDC: React.FunctionComponent = () => {
   const { data: USDCBalance } = useQuery(
     ["USDCBalance"],
-    () => multiCallLoader.load(contractAddresses.USDC),
+    () =>
+      multiCallLoader.load({
+        address: contractAddresses.USDC,
+        method: "balanceOf",
+      }),
     {
       refetchInterval: 5_000,
     }
