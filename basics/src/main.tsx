@@ -1,9 +1,9 @@
-import { ethers } from "ethers";
+import { QueryClientProvider } from "react-query";
 import React from "react";
 import ReactDOM from "react-dom";
-import { log } from "@web3-learning/utils";
 
 import { App } from "~/App";
+import { queryClient } from "~/queryClient";
 import { injectWeb3 } from "~/utils";
 
 import "~/style.css";
@@ -11,7 +11,9 @@ import "~/style.css";
 function renderReactApp() {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </React.StrictMode>,
     document.getElementById("root")
   );

@@ -1,9 +1,10 @@
 import { ethers } from "ethers";
 import { log } from "@web3-learning/utils";
 
-import { Dapp } from "./dapp";
+import { Dapp, dappInstance } from "./dapp";
 import { rpcUrls, contractAddresses } from "./constants";
 
+export { multiCallLoader } from "./multiCallLoader";
 export { useForceUpdate } from "./useForceUpdate";
 
 export const injectWeb3 = () => {
@@ -16,9 +17,5 @@ export const injectWeb3 = () => {
   window.dappRpc = dappRpc;
   window.log = log;
 };
-
-const dappInstance = new Dapp(
-  new ethers.providers.JsonRpcProvider(rpcUrls.polygon)
-);
 
 export { contractAddresses, Dapp, dappInstance, rpcUrls };

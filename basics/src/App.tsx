@@ -1,11 +1,7 @@
 import React from "react";
-import { ethers } from "ethers";
 
 import { DAI, MATIC, USDC } from "~/Balance";
 import { ConnectWallet } from "~/ConnectWallet";
-import { Dapp, rpcUrls, useForceUpdate } from "~/utils";
-
-const dapp = new Dapp(new ethers.providers.JsonRpcProvider(rpcUrls.polygon));
 
 export const App: React.FunctionComponent = () => {
   return (

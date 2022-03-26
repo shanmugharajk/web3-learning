@@ -1,6 +1,7 @@
 # Batching examples to try
 
 [Check the implementation here](https://github.com/tannerlinsley/react-query/discussions/365)
+
 [The library does batching under the hood](https://www.npmjs.com/package/dataloader)
 
 ```js

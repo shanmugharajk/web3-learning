@@ -3,6 +3,8 @@ import { error } from "@web3-learning/utils";
 import { Contract, Provider } from "ethcall";
 import { ethers } from "ethers";
 
+import { rpcUrls } from "./constants";
+
 export class Dapp {
   constructor(
     private provider:
@@ -31,13 +33,10 @@ export class Dapp {
     return ethersContract.balanceOf(walletAddress);
   }
 
-  async multicall(walletAddress: string, addresses: string[]) {
+  async multicall(walletAddress: string, addresses: readonly string[]) {
     try {
       const ethcallProvider = new Provider();
       await ethcallProvider.init(this.provider);
-
-      const nativeTokenBalanceCall =
-        ethcallProvider.getEthBalance(walletAddress);
 
       const calls = addresses.map((address) => {
         const contract = new Contract(address, ERC20Abi);
@@ -45,12 +44,9 @@ export class Dapp {
         return balanceCall;
       });
 
-      const data = await ethcallProvider.all([
-        ...calls,
-        nativeTokenBalanceCall,
-      ]);
+      const data = await ethcallProvider.all(calls);
 
-      return data?.map((record: any) => record.toString());
+      return data?.map((record: any) => record?.toString());
     } catch (err) {
       error(err);
     }
@@ -58,3 +54,7 @@ export class Dapp {
     return [];
   }
 }
+
+export const dappInstance = new Dapp(
+  new ethers.providers.JsonRpcProvider(rpcUrls.polygon)
+);

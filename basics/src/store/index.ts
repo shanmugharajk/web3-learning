@@ -1,2 +1,2 @@
-export type { AppState } from "./useStore";
+export type { AppState } from "./types";
 export { useStore } from "./useStore";

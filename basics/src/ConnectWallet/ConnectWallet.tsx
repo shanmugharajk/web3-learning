@@ -19,7 +19,11 @@ export const ConnectWallet: React.FunctionComponent = () => {
 
   return (
     <div className="card mt-10">
-      <p className="mb-4 text-slate-300">Please connect to MetaMask</p>
+      <p className="mb-4 text-slate-300">
+        {walletAddress
+          ? "You are connected to a wallet"
+          : "Please connect to MetaMask"}
+      </p>
       <button
         className={`btn-dark ${walletAddress ? "cursor-not-allowed" : ""}`}
         onClick={handleConnectWallet}

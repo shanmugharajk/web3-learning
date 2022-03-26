@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@web3-learning/abi": "workspace:^1.0.0",
-    "@web3-learning/utils": "workspace:^1.0.0"
+    "@web3-learning/utils": "workspace:^1.0.0",
+    "react-query": "^3.34.17"
   }
 }

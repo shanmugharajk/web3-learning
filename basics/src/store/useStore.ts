@@ -2,10 +2,7 @@ import { produce } from "immer";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 
-export type AppState = {
-  walletAddress: string;
-  setWalletAddress: (address: string) => void;
-};
+import type { AppState } from "./types";
 
 const immer = (config: any) => (set: any, get: any) =>
   config((fn: any) => set(produce<AppState>(fn), get));
