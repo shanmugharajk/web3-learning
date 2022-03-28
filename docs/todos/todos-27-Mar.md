@@ -5,7 +5,7 @@ Create a hook `useFetchMultiCall` with the below design
 ```js
 // implementation
 type Query = {
-  [address: string]: string[]
+  [address: string]: string
 }
 
 type QueryInfo = {
